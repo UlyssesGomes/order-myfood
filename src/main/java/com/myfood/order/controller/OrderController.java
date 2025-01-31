@@ -4,6 +4,7 @@ import com.myfood.order.dto.OrderDTO;
 import com.myfood.order.dto.StatusDTO;
 import com.myfood.order.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -57,4 +58,9 @@ public class OrderController {
             return ResponseEntity.ok().build();
 
         }
+
+    @GetMapping("/port")
+    public String getServerPort(@Value("${local.server.port}") String port){
+        return String.format("Microservice Order running at port %s", port);
+    }
 }
